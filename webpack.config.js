@@ -44,13 +44,14 @@ module.exports = {
 	//`npm install -g live-server` in my case install local `npm install live-server`
 
 	//Create a client folder for the front end to separate the server and database folders, but not webpack.config or package.json.
-	
+
 	//`mkdir client`		 make new directory client
 	//`mv src client/`   move src to client folder
 
 	//Adject filepaths in webpack.config
 
 	
-
+	//servers
+	//npm install body-parser
 
 
