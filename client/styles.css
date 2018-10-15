@@ -1,0 +1,42 @@
+body {
+	/*background: #eee;*/
+    padding: 10px 25px;
+    /*font-family: arial, sans-serif;*/
+}
+
+.title {
+	font-family: monospace;
+	font-weight: bold;
+	border: solid #ddd;
+    border-width: 1px;
+    padding: 20px;
+    margin-bottom: 10px;
+    background: #007bff3d;
+}
+
+input {
+    /*size: 40px;*/
+    /*border: 1px solid #ddd;*/
+}
+
+#add-query, #search-query {
+	margin: 5px 10px;
+    padding: 7px;
+    border-radius: 4px;
+}
+
+#movie-list {
+    width: auto;
+    margin: 20px;
+    text-align: left;
+    background: white;
+    padding: 20px 20px;
+    border: solid #ddd;
+    border-width: 1px;
+}
+
+#movie-list-entry {
+	margin: 10px;
+	padding: 15px;
+	border: solid #ddd;
+}

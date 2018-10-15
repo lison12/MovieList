@@ -81,15 +81,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="movie-list">
-        <h1 className='title'> Movie List </h1>
+      <div className="movielist">
+        <h1 className="title"> Movie List </h1>
         
         <AddMovie addValue={this.state.addQuery} handleChangeAdd={this.handleChangeAdd.bind(this)} handleAdd={this.handleAdd.bind(this)} />
      
         <Search searchValue={this.state.searchQuery} handleChangeSearch={this.handleChangeSearch.bind(this)} handleSearch={this.handleSearch.bind(this)} />
       
-        <MovieList movies={this.state.filteredMovies}/> 
-       
+        <MovieList movies={this.state.filteredMovies} /> 
       </div>
     );
   }
