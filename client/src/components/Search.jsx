@@ -2,14 +2,16 @@ import React from 'react';
 
 var Search = (props) => {
 
-
 	return (
-	  <forms className='search-bar' >
-	  	<input type='text' id='search-query' value={props.value} onChange={props.handleChange}/>
-	  	<button type='button' className='search-button btn btn-primary' onClick={() => props.handleClick()}> 
+	  <form className='search-bar' onSubmit={props.handleSearch}>
+	  	<label>
+	  		Search for
+		  	<input type='text' id='search-query' value={props.searchValue} onChange={props.handleChangeSearch}/>
+	  	</label>
+	  	<button type='submit' className='search-button btn btn-primary'> 
 	  		Search 
 	  	</button>
-	  </forms>
+	  </form>
 	)
 }
 
@@ -17,10 +19,6 @@ export default Search;
 
 
 
-
-
-
-	// onSubmit={this.handleSubmit}
 
 
 	// this.handleSubmit = this.handleSubmit.bind(this);

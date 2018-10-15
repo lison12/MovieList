@@ -13,8 +13,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       allMovies: movies,
-      filteredMovies: movies.slice(),
-      query: '',
+      filteredMovies: movies,
       searchQuery: '',
       addQuery: ''
     }
@@ -36,53 +35,61 @@ class App extends React.Component {
   }
 
 
-  handleChange(event) {
-      // console.log(event.target.value)
-      // console.log(this.state.query)
-      this.setState({
-        query: event.target.value
-      })
-    }
-
-
-  handleClick(query) {
-    // var element = document.getElementById("search-query").value;
-    var results = this.state.allMovies.filter(movie => movie.title.toLowerCase().includes(this.state.searchquery.toLowerCase()));
-    if (results.length === 0) {
-      results.push({title: 'No movies found'});
-    }
+  handleChangeSearch(event) {
     this.setState({
-      filteredMovies: results,
-      query: '' 
-    });
+      searchQuery: event.target.value
+    })
+    // console.log(this.state.searchQuery)
+    // console.log(event.target.value)
   }
 
-  handleAdd(query) {
-    var element = document.getElementById("add-query").value;
-    var results = this.state.allMovies.filter(movie => movie.title.toLowerCase().includes(query.toLowerCase()));
+
+  handleSearch(event) {
+    // var element = document.getElementById("search-query").value;
+    // console.log(this.state.filteredMovies)
+    // console.log(this.state.searchQuery)
+    var results = this.state.allMovies.filter(movie => movie.title.toLowerCase().includes(this.state.searchQuery.toLowerCase()));
     if (results.length === 0) {
       results.push({title: 'No movies found'});
     }
     this.setState({
-      filteredMovies: results,
-      query: '' 
+      filteredMovies: results
     });
+    event.preventDefault();
+  }
+
+
+  handleChangeAdd(event) {
+    this.setState({
+      addQuery: event.target.value
+    })
+    console.log(this.state.addQuery)
+  }
+
+
+  handleAdd(event) {
+    var results = this.state.allMovies;  
+    results.push({title: this.state.addQuery});    // pushing data into my movies data
+    console.log(results);
+
+    this.setState({
+      filteredMovies: results
+    });
+    event.preventDefault();
   }
 
 
   render() {
     return (
       <div className="movie-list">
-        <h1> Movie List </h1>
-        <div>
-          <AddMovie handleClick={this.handleClick.bind(this)} handleChange={this.handleChange.bind(this)} value={this.state.addQuery}/>
-        </div>
-        <div>
-          <Search handleClick={this.handleClick.bind(this)} handleChange={this.handleChange.bind(this)} value={this.state.searchQuery}/>
-        </div>
-        <div>
-          <MovieList movies={this.state.filteredMovies}/> 
-        </div>
+        <h1 className='title'> Movie List </h1>
+        
+        <AddMovie addValue={this.state.addQuery} handleChangeAdd={this.handleChangeAdd.bind(this)} handleAdd={this.handleAdd.bind(this)} />
+     
+        <Search searchValue={this.state.searchQuery} handleChangeSearch={this.handleChangeSearch.bind(this)} handleSearch={this.handleSearch.bind(this)} />
+      
+        <MovieList movies={this.state.filteredMovies}/> 
+       
       </div>
     );
   }
@@ -91,11 +98,6 @@ class App extends React.Component {
 export default App;
 
 
-        
-    // <ul>
-    //   <li>Instagram</li>
-    //   <li>WhatsApp</li>
-    //   <li>Oculus</li>
-    // </ul>
+ 
 
 
